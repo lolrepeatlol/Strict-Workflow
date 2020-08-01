@@ -21,15 +21,11 @@ function defaultPrefs() {
       'twitter.com',
       'tumblr.com',
       'pinterest.com',
-      'myspace.com',
-      'livejournal.com',
-      'digg.com',
       'stumbleupon.com',
       'reddit.com',
-      'kongregate.com',
-      'newgrounds.com',
-      'addictinggames.com',
       'hulu.com'
+      'netflix.com'
+      'discord.com'
     ],
     durations: { // in seconds
       work: 25 * 60,
