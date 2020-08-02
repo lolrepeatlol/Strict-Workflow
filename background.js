@@ -21,10 +21,9 @@ function defaultPrefs() {
       'twitter.com',
       'tumblr.com',
       'pinterest.com',
-      'stumbleupon.com',
       'reddit.com',
-      'hulu.com'
-      'netflix.com'
+      'hulu.com',
+      'netflix.com',
       'discord.com'
     ],
     durations: { // in seconds
