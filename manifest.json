@@ -17,7 +17,7 @@
    "options_ui": {
       "page": "options.html"
    },
-   "permissions": [ "notifications", "tabs", "<all_urls>", "contextMenus" ],
+   "permissions": [ "notifications", "tabs", "<all_urls>" ],
    "version": "1.0",
    "web_accessible_resources": [
       "icons/work_full.png",

@@ -21,17 +21,21 @@ function defaultPrefs() {
       'twitter.com',
       'tumblr.com',
       'pinterest.com',
-      'reddit.com',
-      'hulu.com',
+      'discord.com',
       'netflix.com',
-      'discord.com'
+      'disney.com',
+      'twitch.tv',
+      'reddit.com',
+      'kongregate.com',
+      'newgrounds.com',
+      'addictinggames.com',
+      'hulu.com'
     ],
     durations: { // in seconds
       work: 25 * 60,
       break: 5 * 60
     },
     shouldRing: true,
-    volume: 1,
     clickRestarts: false,
     whitelist: false
   }
@@ -50,17 +54,17 @@ function updatePrefsFormat(prefs) {
   // say, adding boolean flags with false as the default, there's no
   // compatibility issue. However, in more complicated situations, we need
   // to modify an old PREFS module's structure for compatibility.
-
+  
   if(prefs.hasOwnProperty('domainBlacklist')) {
     // Upon adding the whitelist feature, the domainBlacklist property was
     // renamed to siteList for clarity.
-
+    
     prefs.siteList = prefs.domainBlacklist;
     delete prefs.domainBlacklist;
     savePrefs(prefs);
     console.log("Renamed PREFS.domainBlacklist to PREFS.siteList");
   }
-
+  
   if(!prefs.hasOwnProperty('showNotifications')) {
     // Upon adding the option to disable notifications, added the
     // showNotifications property, which defaults to true.
@@ -68,7 +72,7 @@ function updatePrefsFormat(prefs) {
     savePrefs(prefs);
     console.log("Added PREFS.showNotifications");
   }
-
+  
   return prefs;
 }
 
@@ -87,11 +91,9 @@ function loadRingIfNecessary() {
   console.log('is ring necessary?');
   if(PREFS.shouldRing && !ringLoaded) {
     console.log('ring is necessary');
-    RING.volume = PREFS.volume;
     RING.onload = function () {
       console.log('ring loaded');
       ringLoaded = true;
-      RING.volume = PREFS.volume;
     }
     RING.load();
   }
@@ -141,7 +143,7 @@ function Pomodoro(options) {
     this.currentTimer = new Pomodoro.Timer(this, timerOptions);
     this.currentTimer.start();
   }
-
+  
   this.restart = function () {
       if(this.currentTimer) {
           this.currentTimer.restart();
@@ -160,7 +162,7 @@ Pomodoro.Timer = function Timer(pomodoro, options) {
     options.onStart(timer);
     options.onTick(timer);
   }
-
+  
   this.restart = function() {
       this.timeRemaining = options.duration;
       options.onTick(timer);
@@ -258,7 +260,7 @@ function isLocationBlocked(location) {
       return !PREFS.whitelist;
     }
   }
-
+  
   // If we're in a whitelist, an unmatched location is blocked => true
   // If we're in a blacklist, an unmatched location is not blocked => false
   return PREFS.whitelist;
@@ -268,7 +270,7 @@ function executeInTabIfBlocked(action, tab) {
   var file = "content_scripts/" + action + ".js", location;
   location = tab.url.split('://');
   location = parseLocation(location[1]);
-
+  
   if(isLocationBlocked(location)) {
     chrome.tabs.executeScript(tab.id, {file: file});
   }
@@ -294,7 +296,7 @@ var notification, mainPomodoro = new Pomodoro({
         path: ICONS.ACTION.PENDING[timer.pomodoro.nextMode]
       });
       chrome.browserAction.setBadgeText({text: ''});
-
+      
       if(PREFS.showNotifications) {
         var nextModeName = chrome.i18n.getMessage(timer.pomodoro.nextMode);
         chrome.notifications.create("", {
@@ -306,7 +308,7 @@ var notification, mainPomodoro = new Pomodoro({
           iconUrl: ICONS.FULL[timer.type]
         }, function() {});
       }
-
+      
       if(PREFS.shouldRing) {
         console.log("playing ring", RING);
         RING.play();
@@ -340,7 +342,7 @@ var notification, mainPomodoro = new Pomodoro({
 });
 
 chrome.browserAction.onClicked.addListener(function (tab) {
-  if(mainPomodoro.running) {
+  if(mainPomodoro.running) { 
       if(PREFS.clickRestarts) {
           mainPomodoro.restart();
       }
@@ -362,52 +364,3 @@ chrome.notifications.onClicked.addListener(function (id) {
     chrome.windows.update(window.id, {focused: true});
   });
 });
-
-/*
-    Context menu
- */
-
-chrome.contextMenus.create({
-    contexts: ["browser_action"],
-    "title": chrome.i18n.getMessage("contextmenu_volume_up_label"),
-    "onclick": volumeUp
-});
-
-chrome.contextMenus.create({
-    contexts: ["browser_action"],
-    "title": chrome.i18n.getMessage("contextmenu_volume_down_label"),
-    "onclick": volumeDown
-});
-
-var volumeLabel = chrome.contextMenus.create({
-    contexts: ["browser_action"],
-    "title": getVolumeStatusLabel(),
-    "onclick": volumeTest
-});
-
-function volumeUp() {
-    adjustVolume(1);
-}
-
-function volumeDown() {
-    adjustVolume(-1);
-}
-
-function adjustVolume(adjustBy) {
-    RING.volume = (RING.volume * 10 + adjustBy) / 10;
-    updateVolumeLabel();
-    PREFS.volume = RING.volume;
-    savePrefs(PREFS);
-}
-
-function volumeTest() {
-    RING.play();
-}
-
-function updateVolumeLabel() {
-    chrome.contextMenus.update(volumeLabel, {title: getVolumeStatusLabel() })
-}
-
-function getVolumeStatusLabel() {
-    return chrome.i18n.getMessage("contextmenu_volume_label", [RING.volume * 100]);
-}
