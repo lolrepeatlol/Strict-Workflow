@@ -50,6 +50,28 @@ strict
         margin-left: 1em;
       }
 
+      #restart-message {
+        display: none;
+        position: fixed;
+        left: 5em;
+        right: 5em;
+        top: 10em;
+        height: 5em;
+        background-color: #ffffff;
+        padding: 2em;
+        box-shadow: 0 24px 32px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
+      }
+
+      #page-dim {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, .2);
+      }
+
       #time-format-error {
         color: red;
         display: none;
@@ -144,6 +166,8 @@ strict
       </div>
       <button type="submit" id="save-button" data-i18n="options_save_changes"></button>
       <span id="save-successful" data-i18n="options_save_successful"></span>
+      <span id="page-dim"></span>
+      <span id="restart-message" data-i18n="options_restart_message"></span>
     </form>
     <script type="text/javascript" src="options.js"></script>
   </body>

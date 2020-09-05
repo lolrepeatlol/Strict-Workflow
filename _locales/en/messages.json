@@ -100,5 +100,9 @@
         "example": "work"
       }
     }
+  },
+  "options_restart_message": {
+    "message": "You must restart your browser for your changes to take effect.",
+    "description": "On the options page, message to indicate browser restart in necessary"
   }
 }
