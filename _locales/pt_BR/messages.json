@@ -1,6 +1,6 @@
 {
   "ext_name": {
-    "message": "Strict Workflow",
+    "message": "BlockClock",
     "description": "Name of the extension"
   },
   "ext_description": {
@@ -31,7 +31,7 @@
   },
   
   "options_title": {
-    "message": "Strict Workflow Configurações",
+    "message": "BlockClock Configurações",
     "description": "The title of the options page"
   },
   "options_blacklist_verb": {
@@ -100,5 +100,9 @@
         "example": "work"
       }
     }
+  },
+  "options_restart_message": {
+    "message": "Reinicie o Firefox ou desative e ative a extensão para continuar. <br> Este é um bug que será corrigido em uma atualização futura.",
+    "description": "On the options page, message to indicate browser restart in necessary"
   }
 }
