@@ -18,7 +18,7 @@
       "page": "options.html"
    },
    "permissions": [ "notifications", "tabs", "<all_urls>" ],
-   "version": "2.0",
+   "version": "2.0.1",
    "web_accessible_resources": [
       "icons/work_full.png",
       "icons/break_full.png"
