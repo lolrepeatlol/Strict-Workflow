@@ -100,5 +100,9 @@
         "example": "work"
       }
     }
+  },
+  "options_restart_message": {
+    "message": "Please restart Firefox or disable and enable the extension to continue.<br>This is a bug that will be fixed in a future update.",
+    "description": "On the options page, message to indicate browser restart in necessary"
   }
 }

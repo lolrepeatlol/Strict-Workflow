@@ -1,6 +1,6 @@
 {
   "ext_name": {
-    "message": "Strict Workflow",
+    "message": "BlockClock",
     "description": "Name of the extension"
   },
   "ext_description": {
@@ -31,7 +31,7 @@
   },
   
   "options_title": {
-    "message": "Настройки Строгой помидорки",
+    "message": "Настройки BlockClock",
     "description": "The title of the options page"
   },
   "options_blacklist_verb": {
@@ -96,5 +96,9 @@
         "example": "работать"
       }
     }
+  },
+  "options_restart_message": {
+    "message": "Пожалуйста, перезапустите Firefox или отключите и включите расширение, чтобы продолжить. <br> Это ошибка, которая будет исправлена в будущем обновлении.",
+    "description": "On the options page, message to indicate browser restart in necessary"
   }
 }

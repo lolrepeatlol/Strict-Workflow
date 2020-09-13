@@ -28,6 +28,8 @@ var form = document.getElementById('options-form'),
   clickRestartsEl = document.getElementById('click-restarts'),
   saveSuccessfulEl = document.getElementById('save-successful'),
   timeFormatErrorEl = document.getElementById('time-format-error'),
+  restartMessageEl = document.getElementById('restart-message'),
+  pageDimEl = document.getElementById('page-dim'),
   background = chrome.extension.getBackgroundPage(),
   startCallbacks = {}, durationEls = {};
   
@@ -65,6 +67,8 @@ form.onsubmit = function () {
     clickRestarts:      clickRestartsEl.checked,
     whitelist:          whitelistEl.selectedIndex == 1
   })
+  restartMessageEl.style.display = 'initial';
+  pageDimEl.style.display = 'initial';
   saveSuccessfulEl.className = 'show';
   return false;
 }

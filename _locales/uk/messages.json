@@ -31,7 +31,7 @@
   },
   
   "options_title": {
-    "message": "Налаштування Суворої помідорки",
+    "message": "Налаштування BlockClock",
     "description": "The title of the options page"
   },
   "options_blacklist_verb": {
@@ -96,5 +96,9 @@
         "example": "work"
       }
     }
+  },
+  "options_restart_message": {
+    "message": "Будь ласка, перезапустіть Firefox або вимкніть і ввімкніть розширення для продовження. <br> Це помилка, яку буде виправлено в майбутньому оновленні.",
+    "description": "On the options page, message to indicate browser restart in necessary"
   }
 }
