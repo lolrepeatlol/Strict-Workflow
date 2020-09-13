@@ -102,7 +102,7 @@
     }
   },
   "options_restart_message": {
-    "message": "You must restart your browser for your changes to take effect.",
+    "message": "Please restart Firefox or disable and enable the extension to continue.<br>This is a bug that will be fixed in a future update.",
     "description": "On the options page, message to indicate browser restart in necessary"
   }
 }
