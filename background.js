@@ -29,7 +29,10 @@ function defaultPrefs() {
       'kongregate.com',
       'newgrounds.com',
       'addictinggames.com',
-      'hulu.com'
+      'hulu.com',
+      'instagram.com',
+      'crazygames.com',
+      'poki.com'
     ],
     durations: { // in seconds
       work: 25 * 60,
