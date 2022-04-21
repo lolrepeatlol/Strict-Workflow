@@ -3,34 +3,41 @@
   <head>
     <title data-i18n="options_title"></title>
 
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
     <style type="text/css">
       @font-face {
 		font-family: 'IBM Plex Sans';
-		src: url('/fonts/IBMPlexSans-Regular.ttf');
 		font-style: normal;
+		font-display: swap;
+		font-weight: 400;
+		src: url('/fonts/IBMPlexSans-Regular.ttf');
 		}
 	  @font-face {
 		font-family: 'IBM Plex Sans';
-		src: url('/fonts/IBMPlexSans-Italic.ttf');
 		font-style: italic;
+		font-display: swap;
+		font-weight: 400;
+		src: url('/fonts/IBMPlexSans-Italic.ttf');
 		}
 	  @font-face {
 		font-family: 'IBM Plex Sans';
+		font-style: normal;
+		font-display: swap;
+		font-weight: 700;
 		src: url('/fonts/IBMPlexSans-Bold.ttf');
-		font-style: bold;
 		}
 	  body {
         background: url(icons/break_full.png) no-repeat fixed right bottom;
         font-family: 'IBM Plex Sans', system-ui, sans-serif;
         color: rgb(48, 57, 66);
         -webkit-user-select: none;
+		font-display: swap;
         padding: 1.5em;
         margin: 0;
       }
 strict
       p {
         width: 31em;
+		font-weight: normal;
       }
 
       h1 {
@@ -63,10 +70,12 @@ strict
         color: green;
         display: none;
         margin-left: 1em;
+		font-weight: regular;
       }
 
       #restart-message {
         display: none;
+		font-weight: regular;
         position: fixed;
         left: 5em;
         right: 5em;
